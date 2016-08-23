@@ -1,0 +1,10 @@
+ID,YEAR,COUNTRY_ID,CATEGORY,FUNDING_CATEGORY,TYPE,AMOUNT,CURRENCY,USD_AMOUNT,DESCRIPTION,MAP_COUNTRY
+1,01/01/2016,Denmark,Unearmarked,,Total,160000000.00,DKK,23560595,Unearmarked Funds,Denmark
+2,01/01/2016,Denmark,Flexible Earmark,Emergency Reserve,Total,50500000.00,DKK,"7,436,313",Emergency Reserve Total,Denmark
+4,01/01/2016,Denmark,Flexible Earmark,Emergency Reserve,Allocated,3395500.00,DKK,"500,000",Malawi emergency response,Malawi
+5,01/01/2016,Denmark,Flexible Earmark,Solutions,Total,110000000.00,DKK,"16,197,908",Solutions Total,Denmark
+7,01/01/2016,Denmark,Flexible Earmark,Solutions,Allocated,20000000.00,DKK,"2,945,074",Solutions innovation global,Denmark
+8,01/01/2016,Denmark,Flexible Earmark,Solutions,Allocated,39109800.00,DKK,"5,759,063",Solutions Mano River/West Africa:,"Mali;Niger"
+9,01/01/2016,Denmark,Flexible Earmark,Solutions,Allocated,50890200.00,DKK,"7,493,771",Solutions South-West Asia:,Indonesia
+10,01/01/2016,Denmark,Earmarked,,Total,18000000.00,DKK,"2,707,174",Somali refugees &amp; IDPs Horn of Africa:,Somalia
+11,01/01/2016,Denmark,Earmarked,,Total,2318368.00,DKK,"355,390",Staff/Junior Professional Officer,Denmark

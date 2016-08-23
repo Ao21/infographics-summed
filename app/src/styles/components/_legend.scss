@@ -1,0 +1,132 @@
+.legend {
+	@include span-columns(6);
+	z-index: 0;
+	padding-top: default-spacing(1);
+	@include media($mobile) {
+		@include span-columns(4);
+		position: relative;
+		margin-bottom: default-spacing(2);
+		float: left;
+	}
+	&__title h1 {
+		margin-bottom: default-spacing(0.5);
+		font-weight: 400;
+		span.secondary {
+			@include type-setting(1);
+		}
+	}
+
+	&__sub-title {
+		margin-bottom: default-spacing(0.5);
+	}
+	&__amount {
+		border-bottom: 5px solid $darkBlue;
+		margin-bottom: 0;
+		min-height: 60px;
+		position: relative;
+	}
+	&__amount h3 {
+		color: $darkBlue;
+		font-weight: 600;
+	}
+	&__amount figure {
+		position: absolute;
+		top: 60px;
+		font-size: 10px;
+		padding-top: 5px;
+		margin-left: 47px;
+		text-transform: uppercase;
+		transition: all 0.7s;
+		@include media($mobile) {
+			margin-bottom: default-spacing(1);
+			margin-left: 0!important;
+		}
+		span:first-child {
+			display: none;
+		}
+		&.isTotal {
+			margin-left: 0;
+			span:first-child {
+				display: inline-block;
+			}
+		}
+	}
+	&__sub-legend {
+		opacity: 0;
+		transition: all 0.7s;
+		@include media($mobile) {
+			display: none!important
+		}
+		&.isVisible{
+			opacity: 1;
+		}
+	}
+
+	/* Legend Items */
+	.legend-item {
+		position: relative;
+		padding-bottom: 25px;
+		width: 100%;
+		float: left;
+		&:before {
+			top: 0;
+			content: "";
+			position: absolute;
+			z-index: -1;
+			width: 2px;
+			left: 17px;
+			height: 100%;
+			background-color: $darkBlue;
+		}
+		&:first-of-type {
+			padding-top: default-spacing(3);
+		}
+		&:last-of-type {
+			&:before {
+				top: 0;
+				content: "";
+				position: absolute;
+				z-index: 99;
+				width: 2px;
+				left: 17px;
+				height: 45px;
+				background-color: $darkBlue;
+			}
+		}
+		&__pie {
+			position: relative;
+			float: left;
+			background-color: white;
+			font-size: 10px;
+			font-weight: 600;
+			border: 2px solid $darkBlue;
+			border-radius: 50%;
+			width: 35px;
+			height: 35px;
+			padding-left: 3px;
+			line-height: 32px;
+			text-align: center;
+		}
+		&__details {
+			float: left;
+			min-width: 60%;
+			padding-top: 2px;
+			max-width: 90%;
+			padding-left: default-spacing(0.75);
+			h4 {
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+				
+			}
+			& h6 {
+				padding-top: 5px;
+				text-transform: uppercase;
+				font-weight: 600;
+				@include type-setting(-1);
+				padding-left: 1px;
+			}
+		}
+	}
+	.isTotalTrue {
+		display: none;
+	}
+}

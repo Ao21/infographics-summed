@@ -1,0 +1,18 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "search.exclude": {
+		"**/node_modules": true,
+        "**/target": true,
+		"**/e2e": true,
+        "**/typings": true
+	},
+    "relativePath.ignore": [
+		"**/node_modules/**",
+		"**/*.dll",
+		"**/obj/**",
+		"**/objd/**",
+         "**/target/**",
+		"**/e2e/**",
+        "**/typings/**"
+	]
+}

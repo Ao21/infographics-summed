@@ -1,0 +1,28 @@
+.currency_selector {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+	top: 0;
+	right:0;
+	transition: all 0.3s;
+	&.isActive {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	button {
+		border: 1px solid rgba(0,0,0,0.1);
+		background-color: transparent;
+		
+
+		&:focus {
+			outline:none;
+			border:1px solid #18375F;
+		}
+
+		&.active {
+			color: white;
+			background-color:#18375F;
+		}
+	}
+}

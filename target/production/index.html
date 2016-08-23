@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <link rel='stylesheet' href="src/app.css">
+  <title>Infographics</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <script src="https://use.typekit.net/emo3uvq.js"></script>
+  <script>
+    try {
+      Typekit.load({
+        async: true
+      });
+    } catch (e) {}
+  </script>
+  <base href="./">
+
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+  
+  <!--removeIf(development)-->
+  <script src="app.min.js"></script>
+  <!--endRemoveIf(development)-->
+
+
+</head>
+
+<body>
+  <div class="container">
+    <div id="info">
+      <h1 class="title"></h1>
+      <div class="info__item info__item--legend">
+        <h4 id="LEGEND_NAME">UNHCR DONATIONS 2016</h4>
+      </div>
+      <div class="info__item info__item--breadcrumb">
+        <p><span class="title"></span>
+          <span class="legend_depth_0 legend_depth_0--name"></span>
+        </p>
+      </div>
+      <div class="info__item info__item--price">
+        <h3 id="AMOUNT"></h3>
+        <figure>Amount given by <span class="title"></span></figure>
+      </div>
+      <div class="info__item_legend">
+        <div class="legend--item  legend_depth_0">
+          <div class="percentage legend--item--percentage">5%</div>
+          <section>
+            <h4 class="legend_depth_0--name"></h4>
+            <h6>Makes up <span class="percentage"></span> of <span class="title"></span>'s total Donations</h6>
+          </section>
+
+        </div>
+      </div>
+      <div class="sidebox">
+        <h2 id="AMOUNT">$160,000,000</h2>
+        <h5 id="CATEGORY">Flexible Earmarking</h5>
+        <p id="DESCRIPTION">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem magnam velit soluta commodi, delectus minus placeat eos, cum ducimus odit similique maxime animi deleniti excepturi nam architecto adipisci! Maxime, ullam?</p>
+      </div>
+    </div>
+    <div id="graph"></div>
+  </div>
+</body>
+
+
+</html>

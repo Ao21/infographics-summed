@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "bluebird": "registry:npm/bluebird#3.3.4+20160427051630",
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519"
+  },
+  "ambientDependencies": {
+    "d3": "registry:dt/d3#0.0.0+20160317120654",
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236"
+  },
+  "globalDependencies": {
+    "node": "registry:dt/node#6.0.0+20160818175514"
+  }
+}

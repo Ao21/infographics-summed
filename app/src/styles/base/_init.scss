@@ -1,0 +1,19 @@
+@import "../../node_modules/bourbon/app/assets/stylesheets/_bourbon";
+@import "../../node_modules/bourbon-neat/app/assets/stylesheets/_neat.scss";
+
+$modular-scale-ratio: $perfect-fourth;
+$modular-scale-base: rem(12);
+$baseLineHeight: $modular-scale-base * 1.25;
+
+@import "../../node_modules/bourbon-neat/app/assets/stylesheets/_neat-helpers.scss";
+
+
+$mobile: new-breakpoint(max-width 600px 4);
+$upToDesktop: new-breakpoint(max-width 1023px 8);
+$desktopUp: new-breakpoint(min-width 1024px 12);
+
+
+.container {
+    @include outer-container;
+    position: relative;
+}

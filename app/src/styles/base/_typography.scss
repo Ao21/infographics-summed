@@ -1,0 +1,35 @@
+h1,h2,h3,h4,h5,h6 , p{
+    font-weight: 100;
+    margin: 0;
+    color: lighten($black, 20);
+}
+
+h1 {
+    @include type-setting(4);
+}
+
+
+h2 {
+    @include type-setting(6);
+}
+
+
+h3 {
+    @include type-setting(5);
+}
+
+h4 {
+    @include type-setting(2);
+}
+
+h5 {
+    @include type-setting(1);
+}
+
+h6 {
+    @include type-setting(0);
+}
+
+p {
+    font-weight: 200;
+}

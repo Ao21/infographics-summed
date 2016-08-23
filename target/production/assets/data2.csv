@@ -1,0 +1,18 @@
+ID,YEAR,COUNTRY_ID,CATEGORY,FUNDING_CATEGORY,TYPE,AMOUNT,CURRENCY,USD_AMOUNT,DESCRIPTION
+1,01/01/2016,Denmark,Unearmarked,,Total,430000000.00,DKK,23560595,
+2,01/01/2016,Denmark,Flexible Earmark,Emergency Reserve,Total,760000000.00,DKK,"7,436,313",
+3,01/01/2016,Denmark,Flexible Earmark,Emergency Reserve,Unallocated,97104500.00,DKK,500000,Malawi emergency response
+4,01/01/2016,Denmark,Flexible Earmark,Emergency Reserve,Allocated,4002600.00,DKK,,
+5,01/01/2016,Denmark,Flexible Earmark,Emergency Reserve,Allocated,15048400.00,,,
+6,01/01/2016,Denmark,Flexible Earmark,Emergency Reserve,Allocated,8577000.00,,,
+7,01/01/2016,Denmark,Flexible Earmark,Emergency Reserve,Allocated,518000.00,,,
+8,01/01/2016,Denmark,Flexible Earmark,Emergency Reserve,Allocated,395500.00,DKK,,
+9,01/01/2016,Denmark,Flexible Earmark,Solutions,Total,110000000.00,DKK,"16,197,908",
+10,01/01/2016,Denmark,Flexible Earmark,Solutions,Allocated,20000000.00,DKK,"2,945,074",Solutions innovation global
+11,01/01/2016,Denmark,Flexible Earmark,Solutions,Allocated,39109800.00,DKK,"5,759,063",Solutions Mano River/West Africa:
+12,01/01/2016,Denmark,Flexible Earmark,Solutions,Allocated,50890200.00,DKK,"7,493,771",Solutions South-West Asia:
+13,01/01/2016,Denmark,Flexible Earmark,Solutions,Allocated,230433.00,DKK,"7,493,771",Solutions South-West Asia:
+14,01/01/2016,Denmark,Flexible Earmark,Solutions,Allocated,5303220.00,DKK,"7,493,771",Solutions South-West Asia:
+15,01/01/2016,Denmark,Earmarked,,Total,18000000.00,DKK,"2,707,174",Somali refugees &amp; IDPs Horn of Africa:
+16,01/01/2016,Denmark,Earmarked,,Total,2318368.00,DKK,"355,390",Staff/Junior Professional Officer
+17,01/01/2016,Denmark,Earmarked,,Total,10000000.00,DKK,"355,390",Staff/Junior Professional Officer
