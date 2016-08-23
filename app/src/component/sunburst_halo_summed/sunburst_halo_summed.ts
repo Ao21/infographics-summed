@@ -70,17 +70,6 @@ export class SunburstHaloSummed {
 			}
 		});
 
-
-		this.mouseOut.throttleTime(50).subscribe((next) => {
-			// this.arcPlot.selectAll("path")
-			// 	.style("opacity", 1)
-			// 	.filter((node) => {
-			// 		return node === next;
-			// 	})
-			// 	.style("fill", (d) => {
-			// 		return this.colorRange(d.value);
-			// 	});
-		});
 		this.mouseOver.debounceTime(50).subscribe((next) => {
 			this.lastSelectedCountry = next;
 			this.info.setCountryInfo(next, this.localMode);
@@ -216,7 +205,6 @@ export class SunburstHaloSummed {
 			.data(this.nodes)
 			.enter().append("svg:path")
 			.on("mouseover", (d, i) => this.mouseOver.next(d))
-			.on("mouseout", (d, i) => this.mouseOut.next(d))
 			.on("click", this.click)
 			.attr("display", function (d) { return d.depth ? null : "none"; })
 			.attr("d", this.arc)
