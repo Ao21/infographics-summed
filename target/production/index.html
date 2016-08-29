@@ -30,7 +30,36 @@
 
 <body>
   <div class="container">
-    <div id="info">
+    <div class="legend">
+      <div class="legend__title">
+        <h1>
+          <span class="primary">All Countries</span>
+          <span class="secondary"></span>
+        </h1>
+      </div>
+      <div class="legend__sub-title">
+        <h4>UNHCR TOTAL DONATIONS 2016</h4>
+      </div>
+      <div class="legend__amount">
+        <div class="currency_selector">
+          <button class="active" data-type="default">USD</button>
+          <button data-type="local">Local</button>
+        </div>
+        <h3></h3>
+        <figure class="isTotal"><span>Total </span> Amount given by <span class="country_name"></span></figure>
+      </div>
+      <div class="legend__sub-legend">
+        <div class="legend-item">
+          <div class="legend-item__pie percentage"></div>
+          <section class="legend-item__details">
+            <h4></h4>
+            <h6>Makes up <span class="percentage"></span> of <span class="country_name"></span>'s total Donations</h6>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!--<div id="info">
       <h1 class="title"></h1>
       <div class="info__item info__item--legend">
         <h4 id="LEGEND_NAME">UNHCR DONATIONS 2016</h4>
@@ -46,7 +75,7 @@
       </div>
       <div class="info__item_legend">
         <div class="legend--item  legend_depth_0">
-          <div class="percentage legend--item--percentage">5%</div>
+          <div class="percentage legend--item--percentage"></div>
           <section>
             <h4 class="legend_depth_0--name"></h4>
             <h6>Makes up <span class="percentage"></span> of <span class="title"></span>'s total Donations</h6>
@@ -58,8 +87,8 @@
         <h2 id="AMOUNT">$160,000,000</h2>
         <h5 id="CATEGORY">Flexible Earmarking</h5>
         <p id="DESCRIPTION">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem magnam velit soluta commodi, delectus minus placeat eos, cum ducimus odit similique maxime animi deleniti excepturi nam architecto adipisci! Maxime, ullam?</p>
-      </div>
-    </div>
+      </div>-->
+    <!--</div>-->
     <div id="graph"></div>
   </div>
 </body>

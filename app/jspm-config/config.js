@@ -39,11 +39,12 @@ System.config({
     "lodash-recursive": "npm:lodash-recursive@0.0.0",
     "rxjs": "npm:rxjs@5.0.0-beta.7",
     "scss": "github:theefer/plugin-sass@master",
+    "systemjs": "npm:systemjs@0.19.37",
     "text": "github:systemjs/plugin-text@0.0.2",
     "topojson": "npm:topojson@1.6.26",
     "typescript": "npm:typescript@1.8.10",
     "github:jspm/nodelibs-assert@0.1.0": {
-      "assert": "npm:assert@1.3.0"
+      "assert": "npm:assert@1.4.1"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.6.0"
@@ -85,7 +86,7 @@ System.config({
       "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.3"
+      "process": "npm:process@0.11.8"
     },
     "github:jspm/nodelibs-punycode@0.1.0": {
       "punycode": "npm:punycode@1.3.2"
@@ -186,7 +187,10 @@ System.config({
       "stream": "github:jspm/nodelibs-stream@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:assert@1.3.0": {
+    "npm:assert@1.4.1": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
       "util": "npm:util@0.10.3"
     },
     "npm:async@1.5.2": {
@@ -1010,11 +1014,10 @@ System.config({
     "npm:process-nextick-args@1.0.7": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:process@0.11.2": {
-      "assert": "github:jspm/nodelibs-assert@0.1.0"
-    },
-    "npm:process@0.11.3": {
-      "assert": "github:jspm/nodelibs-assert@0.1.0"
+    "npm:process@0.11.8": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "vm": "github:jspm/nodelibs-vm@0.1.0"
     },
     "npm:pseudomap@1.0.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -1274,6 +1277,13 @@ System.config({
     "npm:supports-color@2.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:systemjs@0.19.37": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2",
+      "when": "npm:when@3.7.7"
+    },
     "npm:tar-pack@3.1.3": {
       "debug": "npm:debug@2.2.0",
       "fstream": "npm:fstream@1.0.8",
@@ -1312,7 +1322,7 @@ System.config({
       "xtend": "npm:xtend@4.0.1"
     },
     "npm:timers-browserify@1.4.2": {
-      "process": "npm:process@0.11.2"
+      "process": "npm:process@0.11.8"
     },
     "npm:topojson@1.6.26": {
       "d3": "npm:d3@3.5.17",
@@ -1370,6 +1380,9 @@ System.config({
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
+    },
+    "npm:when@3.7.7": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:xtend@2.1.2": {
       "object-keys": "npm:object-keys@0.4.0"

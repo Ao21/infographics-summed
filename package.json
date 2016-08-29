@@ -96,6 +96,7 @@
       "lodash-recursive": "npm:lodash-recursive@^0.0.0",
       "rxjs": "npm:rxjs@^5.0.0-beta.7",
       "scss": "github:theefer/plugin-sass@master",
+      "systemjs": "npm:systemjs@^0.19.37",
       "text": "github:systemjs/plugin-text@^0.0.2",
       "topojson": "npm:topojson@^1.6.26"
     },

@@ -12,7 +12,7 @@ html {
   .container::after {
     clear: both;
     content: "";
-    display: table; }
+    display: block; }
 
 h1, h2, h3, h4, h5, h6, p {
   font-weight: 100;
@@ -179,6 +179,145 @@ p {
       height: 47px;
       background-color: #18375F; }
 
+.legend {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  z-index: 0;
+  padding-top: 0.9375rem;
+  /* Legend Items */ }
+  .legend:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 600px) {
+    .legend {
+      float: left;
+      display: block;
+      margin-right: 7.42297%;
+      width: 100%;
+      position: relative;
+      margin-bottom: 1.875rem;
+      float: left; }
+      .legend:last-child {
+        margin-right: 0; } }
+  .legend__title h1 {
+    margin-bottom: 0.46875rem;
+    font-weight: 400; }
+    .legend__title h1 span.secondary {
+      font-size: 0.99975rem;
+      line-height: 1.40625rem; }
+  .legend__sub-title {
+    margin-bottom: 0.46875rem; }
+  .legend__amount {
+    border-bottom: 5px solid #18375F;
+    margin-bottom: 0;
+    min-height: 60px;
+    position: relative; }
+  .legend__amount h3 {
+    color: #18375F;
+    font-weight: 600; }
+  .legend__amount figure {
+    position: absolute;
+    top: 60px;
+    font-size: 10px;
+    padding-top: 5px;
+    margin-left: 47px;
+    text-transform: uppercase;
+    transition: all 0.7s; }
+    @media screen and (max-width: 600px) {
+      .legend__amount figure {
+        margin-bottom: 0.9375rem;
+        margin-left: 0 !important; } }
+    .legend__amount figure span:first-child {
+      display: none; }
+    .legend__amount figure.isTotal {
+      margin-left: 0; }
+      .legend__amount figure.isTotal span:first-child {
+        display: inline-block; }
+  .legend__sub-legend {
+    opacity: 0;
+    transition: all 0.7s; }
+    @media screen and (max-width: 600px) {
+      .legend__sub-legend {
+        display: none !important; } }
+    .legend__sub-legend.isVisible {
+      opacity: 1; }
+  .legend .legend-item {
+    position: relative;
+    padding-bottom: 25px;
+    width: 100%;
+    float: left; }
+    .legend .legend-item:before {
+      top: 0;
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 2px;
+      left: 17px;
+      height: 100%;
+      background-color: #18375F; }
+    .legend .legend-item:first-of-type {
+      padding-top: 2.8125rem; }
+    .legend .legend-item:last-of-type:before {
+      top: 0;
+      content: "";
+      position: absolute;
+      z-index: 99;
+      width: 2px;
+      left: 17px;
+      height: 45px;
+      background-color: #18375F; }
+    .legend .legend-item__pie {
+      position: relative;
+      float: left;
+      background-color: white;
+      font-size: 10px;
+      font-weight: 600;
+      border: 2px solid #18375F;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      padding-left: 3px;
+      line-height: 32px;
+      text-align: center; }
+    .legend .legend-item__details {
+      float: left;
+      min-width: 60%;
+      padding-top: 2px;
+      max-width: 90%;
+      padding-left: 0.70312rem; }
+      .legend .legend-item__details h4 {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+      .legend .legend-item__details h6 {
+        padding-top: 5px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 0.56264rem;
+        line-height: 0.9375rem;
+        padding-left: 1px; }
+  .legend .isTotalTrue {
+    display: none; }
+
+.currency_selector {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  transition: all 0.3s; }
+  .currency_selector.isActive {
+    opacity: 1;
+    pointer-events: all; }
+  .currency_selector button {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: transparent; }
+    .currency_selector button:focus {
+      outline: none;
+      border: 1px solid #18375F; }
+    .currency_selector button.active {
+      color: white;
+      background-color: #18375F; }
+
 #graph {
   position: relative;
   float: left;
@@ -200,7 +339,7 @@ p {
         margin-right: 0; } }
 
 body, html {
-  font-family: 'proxima-nova'; }
+  font-family: 'proxima-nova', Helvetica, Arial; }
 
 .vz-arc-plot path {
   transition: opacity 300ms; }
