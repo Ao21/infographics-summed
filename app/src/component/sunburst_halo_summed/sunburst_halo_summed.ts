@@ -58,15 +58,26 @@ export class SunburstHaloSummed {
 			let a = e.target.dataset.type;
 			$(e.target).addClass('active');
 			if (e.target.dataset.type === 'default') {
-				console.log('usd mode');
 				this.localMode = false;
+				this.prepData();
+				d3.select("#graph").selectAll("path").remove();
+				this.nodes = this.partitionLayout
+					.nodes(this.arcData);
+				this.update();
 				if (this.lastSelectedCountry) {
 					this.info.setCountryInfo(this.lastSelectedCountry, false);
+					this.highlightCountry(this.lastSelectedCountry);
 				}
 			} else {
-				console.log('local mode');
-				this.info.setCountryInfo(this.lastSelectedCountry, true);
 				this.localMode = true;
+				d3.select("#graph").selectAll("path").remove();
+				this.prepData();
+				this.nodes = this.partitionLayout
+					.nodes(this.arcData);
+				this.update();
+				this.info.setCountryInfo(this.lastSelectedCountry, true);
+				this.highlightCountry(this.lastSelectedCountry);
+
 			}
 		});
 
@@ -74,9 +85,14 @@ export class SunburstHaloSummed {
 			this.lastSelectedCountry = next;
 			this.info.setCountryInfo(next, this.localMode);
 			$('.currency_selector').addClass('isActive');
-			let ancestors = SunburstHaloUtils.getAncestors(next);
-			this.info.createAncestors(ancestors);
+			this.highlightCountry(next);
+			
+		});
+	}
 
+	highlightCountry(next) {
+		let ancestors = SunburstHaloUtils.getAncestors(next);
+			this.info.createAncestors(ancestors);
 			this.arcPlot.selectAll("path")
 				.style("opacity", 0.3);
 			this.arcPlot.selectAll("path")
@@ -86,14 +102,13 @@ export class SunburstHaloSummed {
 
 			this.arcPlot.selectAll("path")
 				.filter((node) => {
-					return node === next;
+					return node.localValue === next.localValue;
 				}).style("opacity", 1)
 				.style("fill", (d) => {
 					return this.c.darkBlue(100);
 				});
 
 			this.worldProjection.transition(next.MAP_COUNTRY ? next.MAP_COUNTRY.split(';') : 'default');
-		});
 	}
 
 	init(data: any) {
@@ -133,7 +148,7 @@ export class SunburstHaloSummed {
 		if (this.options && this.options.hasOwnProperty('year')) {
 			year = this.options.year;
 		} else {
-			year = 2016;
+			year = 2015;
 		}
 		this.scope.data = _.filter(this.scope.data, (e: any) => { return e.YEAR === year; });
 		this.sunburstArcs =
@@ -144,13 +159,13 @@ export class SunburstHaloSummed {
 
 		this.sunburstArcs = Utils.unNester(this.sunburstArcs);
 
-		this.arcData = { name: "root", values: SunburstHaloUtils.sumAmounts(this.sunburstArcs) };
-		
+		this.arcData = { name: "root", values: SunburstHaloUtils.sumAmounts(this.sunburstArcs, this.localMode) };
+
 
 		this.totalAmount = this.info.setAmount(SunburstHaloUtils.getTotal(this.arcData.values));
 		this.info.setCountry('All Countries');
 		_.each(this.arcData.children, (e) => {
-			console.log(e);
+			//console.log(e);
 		});
 		this.colors.domain(SunburstHaloUtils.getIds(this.scope.data));
 

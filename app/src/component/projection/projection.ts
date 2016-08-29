@@ -52,7 +52,6 @@ export class WorldProjection {
         this.g = this.vis.append("g").attr("class", "un-world-projection");
 
         this.worldMap = this.g.append("canvas");
-        console.log(this.worldMap.node());
         this.measure();
         return this.g;
     }

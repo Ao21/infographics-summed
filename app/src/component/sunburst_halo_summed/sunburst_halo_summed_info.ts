@@ -35,15 +35,13 @@ export class SunburstHaloInfo {
 
 	setCountryInfo(country: any, isLocalMode?: boolean) {
 		let amount;
-		console.log(isLocalMode);
 		if (isLocalMode) {
 			amount = country.localAggregate ? country.localAggregate : country.LOCAL_TOTAL;
 		} else {
-			amount = country.aggregate ? country.aggregate : country.TOTAL;
+			amount = country.usdAggregate ? country.usdAggregate : country.USD_TOTAL;
 		}
 
 		let category = country.key;
-
 		if (country.depth === 2) {
 			var percentage = Math.round(country.value / country.parent.value * 100);
 			this.setPercentage(percentage);
@@ -84,8 +82,5 @@ export class SunburstHaloInfo {
 			$('.legend__sub-legend').hide();
 
 		}
-
-
-
 	}
 }

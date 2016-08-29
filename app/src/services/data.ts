@@ -12,17 +12,17 @@ export class DataService {
 
             if (!query) {
                 query = {
-                    year: 2016,
+                    year: 2015,
                     country: 'sweden',
                     graph: 'chart'
                 };
             }
-            // d3.json('http://localhost:5000/api/infographics', (data) => {
-            //     res(data);
-            // });
-            d3.json('/api/infographics', (data) => {
+            d3.json('http://localhost:5000/api/infographics', (data) => {
                 res(data);
             });
+            // d3.json('/api/infographics', (data) => {
+            //     res(data);
+            // });
 
         });
     }

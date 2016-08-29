@@ -50,7 +50,6 @@ export class SunburstHaloUtils {
 	static outerR(radius, d, size?) {
 		let r = 20;
 		if (Utils.getPageSize().width <= 786) {
-			console.log('smaller');
 			r = 5;
 		}
 		return radius * Math.sqrt(d.y + d.dy) / 10 - r;
@@ -65,27 +64,42 @@ export class SunburstHaloUtils {
 		return path;
 	}
 
-	static getSummedAmountPerCategory(values) {
+	static getSummedAmountPerCategory(values, localMode?) {
 		_.forEach(values, (category) => {
 			let totalsLocal =
 				_.reduce(_.filter(category.values, (z: any) => { return z.TYPE === 'Total'; })
 					, (sum = 0, z: any) => {
 						return sum + Number(z.AMOUNT);
 					}, 0);
-			let totals =
+			let totalsUSD =
 				_.reduce(_.filter(category.values, (z: any) => { return z.TYPE === 'Total'; })
 					, (sum = 0, z: any) => {
 						return sum + Number(z.USD_AMOUNT);
 					}, 0);
-			category.aggregate = totals;
+			
+			category.usdAggregate = totalsUSD;
 			category.localAggregate = totalsLocal;
+
+			if(!localMode) {
+				category.aggregate = totalsUSD;
+			} else {
+				category.aggregate = totalsLocal;
+			}
+			
 		});
 	}
 
-	static averageEntryByCategory(agg, localAgg, entries) {
+	static averageEntryByCategory(agg, localAgg, usdAgg, entries, localMode?) {
 		_.forEach(entries, (entry) => {
 			entry.localValue = entry.AMOUNT / localAgg;
-			entry.value = entry.USD_AMOUNT / agg;
+			entry.usdValue = entry.USD_AMOUNT / usdAgg;
+
+			if (!localMode) {
+				entry.value = entry.usdValue
+			} else {
+				entry.value = entry.localValue;
+			}
+			
 		});
 	}
 
@@ -94,37 +108,43 @@ export class SunburstHaloUtils {
 	}
 
 
-	static sumAmounts(data) {
+	static sumAmounts(data, localMode?) {
 		_.forEach(data, (e) => {
-			this.getSummedAmountPerCategory(e.values);
+			this.getSummedAmountPerCategory(e.values, localMode);
 			_.forEach(e.values, (x) => {
 				x.values = _.filter(x.values, (z: any) => { return z.TYPE === 'Total'; });
-				this.averageEntryByCategory(x.aggregate, x.localAggregate, x.values);
+				this.averageEntryByCategory(x.aggregate, x.localAggregate, x.usdAggregate ,x.values, localMode);
 			});
 		});
 		_.forEach(data, (e) => {
 			e.COUNTRY_NAME = e.key;
-			let totalCategory = _.reduce(e.values, (sum, o: any) => {
-				return sum += Number(o.aggregate);
-			}, 0);
 
 			let localTotalCategory = _.reduce(e.values, (sum, o: any) => {
 				return sum += Number(o.localAggregate);
 			}, 0);
 
-			e.TOTAL = totalCategory;
+			let usdTotalCategory = _.reduce(e.values, (sum, o: any) => {
+				return sum += Number(o.usdAggregate);
+			}, 0);
+
 			e.LOCAL_TOTAL = localTotalCategory;
+			e.USD_TOTAL = usdTotalCategory;
 
 			_.forEach(e.values, (x) => {
 				e.CURRENCY = x.values[0].CURRENCY;
 				delete x.values;
 				x.COUNTRY_NAME = e.key;
-				x.value = x.aggregate / totalCategory;
+				x.usdValue = x.usdAggregate / usdTotalCategory;
 				x.localValue = x.localAggregate / localTotalCategory;
+				if (!localMode) {
+					x.value = x.usdValue;
+				} else {
+					x.value = x.localValue;
+				}
+				
 			});
 			e.value = 1;
 		});
-		console.log(data);
 		return data;
 	}
 }
