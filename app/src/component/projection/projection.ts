@@ -148,8 +148,9 @@ export class WorldProjection {
             timer = null;
         }
 
-        if (countryName === 'default') {
-            countryName = ['Denmark', 'Finland', 'Sweden', 'Norway', 'Estonia'];
+        if (countryName === 'default' || !countryName) {
+            return this.rotate();
+            //countryName = ['Denmark', 'Finland', 'Sweden', 'Norway', 'Estonia'];
         }
 
         if (_.isString(countryName)) {
