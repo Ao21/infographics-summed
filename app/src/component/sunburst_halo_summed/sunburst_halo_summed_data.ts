@@ -2,6 +2,8 @@ import * as _ from 'lodash';
 import * as recursive from 'lodash-recursive';
 import { Utils } from './../../common/utils';
 
+let entryId = 0;
+
 export class SunburstHaloUtils {
 
 	private totalAmount: any;
@@ -109,6 +111,7 @@ export class SunburstHaloUtils {
 
 
 	static sumAmounts(data, localMode?) {
+		entryId = 0;
 		_.forEach(data, (e) => {
 			this.getSummedAmountPerCategory(e.values, localMode);
 			_.forEach(e.values, (x) => {
@@ -118,6 +121,7 @@ export class SunburstHaloUtils {
 		});
 		_.forEach(data, (e) => {
 			e.COUNTRY_NAME = e.key;
+			e.id = entryId++;
 
 			let localTotalCategory = _.reduce(e.values, (sum, o: any) => {
 				return sum += Number(o.localAggregate);
@@ -129,8 +133,14 @@ export class SunburstHaloUtils {
 
 			e.LOCAL_TOTAL = localTotalCategory;
 			e.USD_TOTAL = usdTotalCategory;
+			if (!localMode) {
+				e.TOTAL = e.USD_TOTAL;
+			} else {
+				e.TOTAL = e.LOCAL_TOTAL;
+			}
 
 			_.forEach(e.values, (x) => {
+				x.id = entryId++;
 				e.CURRENCY = x.values[0].CURRENCY;
 				delete x.values;
 				x.COUNTRY_NAME = e.key;

@@ -7,6 +7,16 @@ export class SunburstHaloInfo {
 
 	}
 
+	reset() {
+		this.setCountry('All Countries');
+		$('.legend__title h1 span.primary').text('All Countries');
+		$('.legend__title h1 span.secondary').text('');
+		
+		$('.currency_selector').removeClass('isActive');
+		$('.currency_selector button').removeClass('active');
+		$('.currency_selector button:nth-of-type(1)').addClass('active');
+	}
+
 	setTitle(title, category) {
 		$('.legend__title h1 span.primary').text(title);
 		$('.legend__title h1 span.secondary').text('');

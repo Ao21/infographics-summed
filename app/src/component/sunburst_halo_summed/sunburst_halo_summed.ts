@@ -86,29 +86,32 @@ export class SunburstHaloSummed {
 			this.info.setCountryInfo(next, this.localMode);
 			$('.currency_selector').addClass('isActive');
 			this.highlightCountry(next);
-			
+			$('.resetButton').show();
+
+
 		});
 	}
 
 	highlightCountry(next) {
 		let ancestors = SunburstHaloUtils.getAncestors(next);
-			this.info.createAncestors(ancestors);
-			this.arcPlot.selectAll("path")
-				.style("opacity", 0.3);
-			this.arcPlot.selectAll("path")
-				.filter(function (node) {
-					return (ancestors.indexOf(node) >= 0);
-				}).style("opacity", 1);
+		this.info.createAncestors(ancestors);
+		this.arcPlot.selectAll("path")
+			.style("opacity", 0.3);
+		this.arcPlot.selectAll("path")
+			.filter(function (node) {
+				return (ancestors.indexOf(node) >= 0);
+			}).style("opacity", 1);
 
-			this.arcPlot.selectAll("path")
-				.filter((node) => {
-					return node.localValue === next.localValue;
-				}).style("opacity", 1)
-				.style("fill", (d) => {
-					return this.c.darkBlue(100);
-				});
+		this.arcPlot.selectAll("path")
+			.filter((node) => {
+				return node.id === next.id;
 
-			this.worldProjection.transition(next.MAP_COUNTRY ? next.MAP_COUNTRY.split(';') : 'default');
+			}).style("opacity", 1)
+			.style("fill", (d) => {
+				return this.c.darkBlue(100);
+			});
+
+		this.worldProjection.transition(next.MAP_COUNTRY ? next.MAP_COUNTRY.split(';') : 'default');
 	}
 
 	init(data: any) {
@@ -127,6 +130,7 @@ export class SunburstHaloSummed {
 		this.worldPlot = this.vis.append("g").attr("class", "un-world-plot");
 		let worldPosition = this.scope.size.width * 0.5;
 		let g = this.worldProjection.init(this.worldPlot, worldPosition);
+
 		g.style('position', 'absolute')
 			.style('top', this.scope.size.height / 2 - (worldPosition / 2) + 'px')
 			.style('left', this.scope.size.width / 2 - (worldPosition / 2) + 'px')
@@ -141,6 +145,10 @@ export class SunburstHaloSummed {
 
 		this.measure();
 		this.update();
+		this.worldProjection.rotate();
+		$('.resetButton').click((e) => {
+			this.reset();
+		});
 	}
 
 	prepData(currencyType?: any) {
@@ -160,7 +168,6 @@ export class SunburstHaloSummed {
 		this.sunburstArcs = Utils.unNester(this.sunburstArcs);
 
 		this.arcData = { name: "root", values: SunburstHaloUtils.sumAmounts(this.sunburstArcs, this.localMode) };
-
 
 		this.totalAmount = this.info.setAmount(SunburstHaloUtils.getTotal(this.arcData.values));
 		this.info.setCountry('All Countries');
@@ -257,17 +264,26 @@ export class SunburstHaloSummed {
 		}
 		return d;
 	}
-	click = (d) => {
 
+	reset = (d?) => {
+		this.localMode = false;
+		this.prepData();
+		d3.select("#graph").selectAll("path").remove();
+		this.nodes = this.partitionLayout
+			.nodes(this.arcData);
+		this.update();
+		this.info.reset();
+		this.totalAmount = this.info.setAmount(SunburstHaloUtils.getTotal(this.arcData.values));
+		$('.resetButton').hide();
+		$('.legend__amount figure').addClass('isTotal');
+		$('.legend__sub-legend').hide();
+		
+		this.worldProjection.rotate();
+		this.update();
 
-		// this.vis.transition()
-
-		// 	.selectAll("path")
-		// 	.attrTween("d", (d) => { return () => { return this.arc(d); }; });
 	}
-	selectCountry = (e) => {
 
-
-	}
+	click = (d) => {}
+	selectCountry = (e) => {}
 
 }

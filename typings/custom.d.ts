@@ -12,6 +12,10 @@ declare module 'lodash-recursive' {
 
 }
 
+
+declare module 'd3-timer' {
+	function timer(timer: any): any;
+}
 declare module 'd3-queue' {
 	function queue(concurrency): any;
 	function queue(): any;

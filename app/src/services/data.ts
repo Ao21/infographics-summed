@@ -17,12 +17,12 @@ export class DataService {
                     graph: 'chart'
                 };
             }
-            d3.json('http://localhost:5000/api/infographics', (data) => {
-                res(data);
-            });
-            // d3.json('/api/infographics', (data) => {
+            // d3.json('http://localhost:5000/api/infographics', (data) => {
             //     res(data);
             // });
+            d3.json('/api/infographics', (data) => {
+                res(data);
+            });
 
         });
     }

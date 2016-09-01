@@ -3,9 +3,14 @@ import * as _ from 'lodash';
 import {Utils} from './../../common/utils';
 import * as q from 'd3-queue';
 import * as topojson from 'topojson';
+import * as d3Timer from 'd3-timer';
 
 import {Colors} from './../../common/colours';
 
+let time = Date.now();
+var rotate = [0, 0];
+var velocity = [.025, -0];
+let timer = null;
 
 export class WorldProjection {
     scope: any;
@@ -63,10 +68,10 @@ export class WorldProjection {
 
         this.vis
             .attr("width", this.scope.width + 'px')
-            .attr("height", this.scope.height  + 'px');
+            .attr("height", this.scope.height + 'px');
         this.worldMap
-            .attr("width", this.scope.width  + 'px')
-            .attr("height", this.scope.height  + 'px')
+            .attr("width", this.scope.width + 'px')
+            .attr("height", this.scope.height + 'px')
             .style("border-radius", "50%")
             .style("pointer-events", "none");
 
@@ -107,15 +112,41 @@ export class WorldProjection {
             this.countriesDict[e.name] = e;
         })
 
-        setTimeout(() => {
-            this.transition(['Denmark', 'Finland', 'Sweden', 'Norway', 'Estonia']);
-        }, 1500);
+        // setTimeout(() => {
+        //     this.transition(['Denmark', 'Finland', 'Sweden', 'Norway', 'Estonia']);
+        // }, 1500);
+
+    }
+
+    rotate = () => {
+        if (timer === null) {
+            let n = -0.1;
+            timer = d3Timer.timer(() => {
+                var dt = Date.now() - time;
+                if (rotate[1] < -50) {
+                    n = 0.1;
+                    rotate[1] = -49;
+                } else if (rotate[1] > 50) {
+                    n = -0.1;
+                    rotate[1] = 49;
+                }
+
+                rotate[1] = rotate[1] + n;                
+                this.projection.rotate([rotate[0] + velocity[0] * dt, rotate[1] + velocity[1] * dt]);
+                this.updateWorld();
+            });
+        }
 
     }
 
     transition = (countryName) => {
         let country;
         let countries = [];
+
+        if (timer) {
+            timer.stop();
+            timer = null;
+        }
 
         if (countryName === 'default') {
             countryName = ['Denmark', 'Finland', 'Sweden', 'Norway', 'Estonia'];
@@ -140,7 +171,11 @@ export class WorldProjection {
 
                     this.projection.rotate(r(t));
                     this.context.clearRect(0, 0, this.scope.width, this.scope.height);
-                    this.context.fillStyle = "#ccc", this.context.beginPath(), this.path(this.land), this.context.fill();
+                    this.context.fillStyle = "#ccc",
+                        this.context.beginPath(),
+                        this.path(this.land),
+                        this.context.fill();
+
                     _.each(countries, (e) => {
                         this.context.fillStyle =
                             this.colors.blue(),
@@ -154,6 +189,24 @@ export class WorldProjection {
             })
             .transition()
 
+    }
+
+    updateWorld() {
+        this.context.clearRect(0, 0, this.scope.width, this.scope.height);
+                    this.context.fillStyle = "#ccc",
+                        this.context.beginPath(),
+                        this.path(this.land),
+                        this.context.fill();
+
+                    // _.each(countries, (e) => {
+                    //     this.context.fillStyle =
+                    //         this.colors.blue(),
+                    //         this.context.beginPath(),
+                    //         this.path(e),
+                    //         this.context.fill();
+                    // })
+                    this.context.strokeStyle = "#fff", this.context.lineWidth = .5, this.context.beginPath(), this.path(this.borders), this.context.stroke();
+                    this.context.strokeStyle = "#000", this.context.lineWidth = 2, this.context.beginPath(), this.path(this.globe), this.context.stroke();
     }
 
 }
