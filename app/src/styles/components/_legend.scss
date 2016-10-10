@@ -15,9 +15,13 @@
 			@include type-setting(1);
 		}
 	}
-
 	&__sub-title {
 		margin-bottom: default-spacing(0.5);
+		h4 {
+			@include media($mobile) {
+				@include type-setting(1);
+			}
+		}
 	}
 	&__amount {
 		border-bottom: 5px solid $darkBlue;
@@ -28,6 +32,10 @@
 	&__amount h3 {
 		color: $darkBlue;
 		font-weight: 600;
+		@include media($mobile) {
+			@include type-setting(3);
+			padding-top: 18px;
+		}
 	}
 	&__amount figure {
 		position: absolute;
@@ -38,6 +46,7 @@
 		text-transform: uppercase;
 		transition: all 0.7s;
 		@include media($mobile) {
+			top: 54px;
 			margin-bottom: default-spacing(1);
 			margin-left: 0!important;
 		}
@@ -57,11 +66,10 @@
 		@include media($mobile) {
 			display: none!important
 		}
-		&.isVisible{
+		&.isVisible {
 			opacity: 1;
 		}
 	}
-
 	/* Legend Items */
 	.legend-item {
 		position: relative;
@@ -115,7 +123,6 @@
 			padding-left: default-spacing(0.75);
 			h4 {
 				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-				
 			}
 			& h6 {
 				padding-top: 5px;
@@ -134,11 +141,11 @@
 .resetButton {
 	position: absolute;
 	display: none;
-    top: 30px;
-    right: 30px;
-    z-index: 99999;
-    height: 45px;
-    width: 45px;
+	top: 30px;
+	right: 30px;
+	z-index: 99999;
+	height: 45px;
+	width: 45px;
 	z-index: 9999999;
 	@include media($mobile) {
 		top: 10px;

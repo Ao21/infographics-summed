@@ -82,7 +82,6 @@ export class SunburstHaloInfo {
 		if (ancestors[1]) {
 			$('.legend__amount figure').removeClass('isTotal');
 			let title = ancestors[1].key;
-
 			let price = ancestors[1].aggregate ? ancestors[1].aggregate : ancestors[1].TOTAL;
 			$('.legend-item__details h4').text(title);
 

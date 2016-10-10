@@ -53,6 +53,10 @@ export class SunburstHaloSummed {
 
 	constructor() {
 
+		if(!this.options){
+			this.options = { "country": "denmark", "graph": "sunburstProjection", "translations": { "totalContributions": "Totale bidrag til", "unhcr": "Totale bidrag til UNHCR", "contributions": "Sist opdateret", "comprises": "Udgør <span class=\"percentage\"></span> af", "total": "<span>Totale</span> bidrag til <span class=\"country_name\"></span>", "countryName": "testland" } };
+		}
+
 		$('.currency_selector button').click((e: any) => {
 			$('.currency_selector button').removeClass('active');
 			let a = e.target.dataset.type;

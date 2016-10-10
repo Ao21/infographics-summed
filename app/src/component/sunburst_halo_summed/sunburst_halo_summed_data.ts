@@ -93,6 +93,8 @@ export class SunburstHaloUtils {
 
 	static averageEntryByCategory(agg, localAgg, usdAgg, entries, localMode?) {
 		_.forEach(entries, (entry) => {
+			entry.categoryInfo = entry.CATEGORY_REF;
+			entry.countryInfo = entry.COUNTRY_ID;
 			entry.localValue = entry.AMOUNT / localAgg;
 			entry.usdValue = entry.USD_AMOUNT / usdAgg;
 
@@ -122,7 +124,6 @@ export class SunburstHaloUtils {
 		_.forEach(data, (e) => {
 			e.COUNTRY_NAME = e.key;
 			e.id = entryId++;
-
 			let localTotalCategory = _.reduce(e.values, (sum, o: any) => {
 				return sum += Number(o.localAggregate);
 			}, 0);
@@ -141,7 +142,10 @@ export class SunburstHaloUtils {
 
 			_.forEach(e.values, (x) => {
 				x.id = entryId++;
+				x.CATEGORY = x.values[0].CATEGORY_REF;
 				e.CURRENCY = x.values[0].CURRENCY;
+				e.COUNTRY = x.values[0].COUNTRY_ID;
+				x.COUNTRY = x.values[0].COUNTRY_ID;
 				delete x.values;
 				x.COUNTRY_NAME = e.key;
 				x.usdValue = x.usdAggregate / usdTotalCategory;
@@ -155,6 +159,7 @@ export class SunburstHaloUtils {
 			});
 			e.value = 1;
 		});
+		console.log(data);
 		return data;
 	}
 }
