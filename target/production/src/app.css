@@ -208,6 +208,10 @@ p {
       line-height: 1.40625rem; }
   .legend__sub-title {
     margin-bottom: 0.46875rem; }
+    @media screen and (max-width: 600px) {
+      .legend__sub-title h4 {
+        font-size: 0.99975rem;
+        line-height: 1.40625rem; } }
   .legend__amount {
     border-bottom: 5px solid #18375F;
     margin-bottom: 0;
@@ -216,6 +220,11 @@ p {
   .legend__amount h3 {
     color: #18375F;
     font-weight: 600; }
+    @media screen and (max-width: 600px) {
+      .legend__amount h3 {
+        font-size: 1.77644rem;
+        line-height: 2.34375rem;
+        padding-top: 18px; } }
   .legend__amount figure {
     position: absolute;
     top: 60px;
@@ -226,6 +235,7 @@ p {
     transition: all 0.7s; }
     @media screen and (max-width: 600px) {
       .legend__amount figure {
+        top: 54px;
         margin-bottom: 0.9375rem;
         margin-left: 0 !important; } }
     .legend__amount figure span:first-child {

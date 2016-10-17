@@ -114,8 +114,9 @@ export class SunburstHaloSummed {
 			.style("fill", (d) => {
 				return this.c.darkBlue(100);
 			});
+		console.log(next);
 
-		this.worldProjection.transition(next.MAP_COUNTRY ? next.MAP_COUNTRY.split(';') : 'default');
+		this.worldProjection.transition(next.COUNTRY_NAME ? next.COUNTRY_NAME : 'default');
 	}
 
 	init(data: any) {
@@ -158,6 +159,7 @@ export class SunburstHaloSummed {
 	prepData(currencyType?: any) {
 		let year;
 		if (this.options && this.options.hasOwnProperty('year')) {
+			this.info.setYear(year);
 			year = this.options.year;
 		} else {
 			year = 2015;

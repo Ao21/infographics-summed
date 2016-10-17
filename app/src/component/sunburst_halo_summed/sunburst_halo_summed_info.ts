@@ -26,6 +26,10 @@ export class SunburstHaloInfo {
 		this.setCountry(title);
 	}
 
+	setYear(year) {
+		$('.year').text(year);
+	}
+
 	setPercentage(percentage) {
 		$('.percentage').text(percentage + '%');
 	}
