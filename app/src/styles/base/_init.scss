@@ -16,4 +16,5 @@ $desktopUp: new-breakpoint(min-width 1024px 12);
 .container {
     @include outer-container;
     position: relative;
+    max-width: none;
 }
