@@ -1,6 +1,6 @@
 #graph {
     position: relative;
-    @include span-columns(6);
+    @include span-columns(5);
     @include media($mobile) {
         @include span-columns(4);
         margin-top: default-spacing(1);
