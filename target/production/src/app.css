@@ -9,7 +9,9 @@ html {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  max-width: none; }
+  max-width: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   .container::after {
     clear: both;
     content: "";
@@ -371,9 +373,7 @@ p {
 
 body, html {
   font-family: 'proxima-nova', Helvetica, Arial;
-  background-color: transparent;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  background-color: transparent; }
 
 .vz-arc-plot path {
   transition: opacity 300ms; }

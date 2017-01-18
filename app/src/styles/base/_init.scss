@@ -17,4 +17,6 @@ $desktopUp: new-breakpoint(min-width 1024px 12);
     @include outer-container;
     position: relative;
     max-width: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
